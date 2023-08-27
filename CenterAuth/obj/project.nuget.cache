@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "+wgW01+qiBcE4onVye+ILfpO9sATQQ+NkxX0kbCIA8+RcHLy1Cfjm7Yakiv49HRBaCOF4Zxn5l1IT0dT+Q3Opw==",
+  "dgSpecHash": "2+Rh+e9D+MxxMUtBntURFrIM8ro6FzAz2bA5VOeh06ctdzHDEAJkWgTKRUnwKW1O13lQZ4IFv/+aD6G145dWhw==",
   "success": true,
-  "projectFilePath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth\\CenterAuth.csproj",
+  "projectFilePath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth\\CenterAuth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lanza\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\lanza\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
-    "C:\\Users\\lanza\\.nuget\\packages\\entityframework\\6.2.0\\entityframework.6.2.0.nupkg.sha512",
     "C:\\Users\\lanza\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.21\\microsoft.aspnetcore.authentication.jwtbearer.6.0.21.nupkg.sha512",
     "C:\\Users\\lanza\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\lanza\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
@@ -56,16 +55,5 @@
     "C:\\Users\\lanza\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\lanza\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'EntityFramework 6.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "EntityFramework",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

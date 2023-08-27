@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj": {}
+    "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj": {}
   },
   "projects": {
-    "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj": {
+    "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
+        "projectUniqueName": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
         "projectName": "CenterAuth.Repositories",
-        "projectPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
+        "projectPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
         "packagesPath": "C:\\Users\\lanza\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\obj\\",
+        "outputPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lanza\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,10 +40,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.2.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.21, )"
@@ -69,14 +65,14 @@
         }
       }
     },
-    "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj": {
+    "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj",
+        "projectUniqueName": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj",
         "projectName": "CenterAuth.Services",
-        "projectPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj",
+        "projectPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Services\\CenterAuth.Services.csproj",
         "packagesPath": "C:\\Users\\lanza\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Services\\obj\\",
+        "outputPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lanza\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,8 +89,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj": {
-                "projectPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj"
+              "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj": {
+                "projectPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj"
               }
             }
           }

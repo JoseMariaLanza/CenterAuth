@@ -585,11 +585,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
+      "projectUniqueName": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
       "projectName": "CenterAuth.Repositories",
-      "projectPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
+      "projectPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
       "packagesPath": "C:\\Users\\lanza\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\obj\\",
+      "outputPath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lanza\\AppData\\Roaming\\NuGet\\NuGet.Config",

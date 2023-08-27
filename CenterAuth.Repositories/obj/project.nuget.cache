@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t4aj9/rXfLToQMRy/cpDBqehTmcgBvs8uEMQZQ8ExiZDzqQ6Y3EScqAn2CzUYru1PK0HxohbCiEN6dyl3yp94w==",
+  "dgSpecHash": "gzaK6amzA01814HTUJCZuxm8qqfhh8ilxw4U4+ryUsyIzLg25viRwPxj5gGlMGJVLpIBNlNHj4hbp0N+CELHqw==",
   "success": true,
-  "projectFilePath": "D:\\projects\\Personal\\.NET Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
+  "projectFilePath": "D:\\projects\\Personal\\.NET-Core\\CenterAuth\\CenterAuth.Repositories\\CenterAuth.Repositories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lanza\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.21\\microsoft.entityframeworkcore.6.0.21.nupkg.sha512",
     "C:\\Users\\lanza\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.21\\microsoft.entityframeworkcore.abstractions.6.0.21.nupkg.sha512",

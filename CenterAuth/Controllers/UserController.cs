@@ -1,14 +1,27 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CenterAuth.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CenterAuth.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class UserController : Controller
     {
-        // GET: UserController
-        public ActionResult Index()
+        private readonly IAuthService _authService;
+
+        public UserController(IAuthService authService)
         {
-            return View();
+            _authService = authService;
+        }
+
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(string username, string password)
+        {
+            var user = _authService.Authenticate(username, password);
+            if (user == null) return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(user);
         }
 
         // GET: UserController/Details/5

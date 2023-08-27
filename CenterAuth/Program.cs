@@ -1,4 +1,6 @@
 using AutoMapper;
+using CenterAuth.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace CenterAuth
 {
@@ -11,11 +13,15 @@ namespace CenterAuth
             // Add services to the container.
 
             builder.Services.AddControllers();
-            //builder.Services.AddDbContext<>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<IAuthDbContext, AuthDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AuthDbContext")));
+            builder.Services.AddTransient<IAuthDbContext, AuthDbContext>();
             builder.Services.AddAutoMapper(typeof(StartupBase));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.EnableAnnotations();
+            });
 
             var app = builder.Build();
 

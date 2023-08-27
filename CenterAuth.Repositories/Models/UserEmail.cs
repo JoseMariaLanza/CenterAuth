@@ -8,6 +8,7 @@
 
         public string Email { get; set; }
 
-        public virtual User User { get; set; }
+        // This returns the user data when I get the email
+        //public virtual User User { get; set; }
     }
 }

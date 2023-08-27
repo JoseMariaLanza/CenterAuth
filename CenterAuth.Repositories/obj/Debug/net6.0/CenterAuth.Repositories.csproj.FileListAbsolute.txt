@@ -10,3 +10,15 @@ D:\projects\Personal\.NET Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6
 D:\projects\Personal\.NET Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\refint\CenterAuth.Repositories.dll
 D:\projects\Personal\.NET Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.pdb
 D:\projects\Personal\.NET Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\ref\CenterAuth.Repositories.dll
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\bin\Debug\net6.0\CenterAuth.Repositories.deps.json
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\bin\Debug\net6.0\CenterAuth.Repositories.dll
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\bin\Debug\net6.0\CenterAuth.Repositories.pdb
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.csproj.AssemblyReference.cache
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.AssemblyInfoInputs.cache
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.AssemblyInfo.cs
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.csproj.CoreCompileInputs.cache
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.dll
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\refint\CenterAuth.Repositories.dll
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.pdb
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\ref\CenterAuth.Repositories.dll

@@ -9,6 +9,8 @@ namespace CenterAuth.Services.Mapping
         public UserProfile()
         {
             CreateMap<User, UserGet>();
+            CreateMap<UserEmail, UserEmailGet>();
+            CreateMap<UserType, UserTypeGet>();
             // Any other required mappings.
         }
     }

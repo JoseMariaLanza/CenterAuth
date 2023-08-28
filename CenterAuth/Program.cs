@@ -10,26 +10,24 @@ namespace CenterAuth
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var configuration = builder.Configuration;
+            // Configure services in my ServiceExtension class
+            builder.Services.ConfigureDatabase(configuration);
+            builder.Services.ConfigureDependencies();
+            builder.Services.ConfigureSwagger();
+            builder.Services.ConfigureJwtAuthentication(configuration);
+
             // Add services to the container.
-
             builder.Services.AddControllers();
-            builder.Services.AddDbContext<IAuthDbContext, AuthDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("AuthDbContext")));
-            builder.Services.AddTransient<IAuthDbContext, AuthDbContext>();
             builder.Services.AddAutoMapper(typeof(StartupBase));
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.EnableAnnotations();
-            });
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CenterAuth API v1"));
             }
 
             app.UseHttpsRedirection();

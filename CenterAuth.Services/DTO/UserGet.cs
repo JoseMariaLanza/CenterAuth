@@ -1,6 +1,7 @@
 ﻿using CenterAuth.Repositories.Models;
 using System.ComponentModel.DataAnnotations;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Text.Json.Serialization;
 
 namespace CenterAuth.Services.DTO
 {
@@ -18,10 +19,12 @@ namespace CenterAuth.Services.DTO
 
         [Display(Name = "User Emails")]
         [SwaggerSchema("Collection of the emails asociated to one User")]
-        public virtual ICollection<UserEmail> Emails { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<UserEmailGet> Emails { get; set; }
+        public string[] AssociatedEmails => Emails.Select(e => e.Email).ToArray();
 
         [Display(Name = "User Type")]
         [SwaggerSchema("User type")]
-        public virtual UserType UserType { get; set; }
+        public virtual UserTypeGet UserType { get; set; }
     }
 }

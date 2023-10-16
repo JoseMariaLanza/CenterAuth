@@ -22,3 +22,5 @@ D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\refint\CenterAuth.Repositories.dll
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.pdb
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\ref\CenterAuth.Repositories.dll
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\bin\Debug\net6.0\CenterAuth.Repositories.runtimeconfig.json
+D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth.Repositories\obj\Debug\net6.0\CenterAuth.Repositories.genruntimeconfig.cache

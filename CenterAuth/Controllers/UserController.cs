@@ -1,4 +1,5 @@
-﻿using CenterAuth.Services;
+﻿using CenterAuth.Helpers;
+using CenterAuth.Services;
 using CenterAuth.Services.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,23 +11,37 @@ namespace CenterAuth.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
-        private readonly IAuthService _authService;
+        private readonly IAuthenticationService _authService;
 
-        public UserController(IAuthService authService)
+        public UserController(IAuthenticationService authService)
         {
             _authService = authService;
         }
 
-        [HttpPost("authenticate")]
+        [HttpPost("login")]
         [SwaggerOperation(Summary = "Authenticate the user and retrieve his data.")]
-        [SwaggerResponse(200, "User authenticated.", typeof(UserGet))]
+        [SwaggerResponse(200, "User authenticated.", typeof(string))]
         [SwaggerResponse(400, "Wrong credentials.")]
-        public IActionResult Authenticate(string username, string password)
+        public async Task<IActionResult> Login([FromBody] UserLoginDto userLoginDto) // Assuming you have a UserLoginDto
         {
-            var user = _authService.Authenticate(username, password);
-            if (user == null) return BadRequest(new { message = "Username or password is incorrect" });
+            var jwt = await _authService.AuthenticateUserAsync(userLoginDto.UserName, userLoginDto.Password);
+            if (string.IsNullOrEmpty(jwt))
+                return ApiResponse.NotFound("User does not exists.");
 
-            return Ok(user);
+            return ApiResponse.Ok("User authenticated.", "access_token", jwt);
+        }
+
+        [HttpPost("create")]
+        [SwaggerOperation(Summary = "Create a user account, authenticate and retrieve his data.")]
+        [SwaggerResponse(200, "User authenticated.", typeof(string))]
+        [SwaggerResponse(400, "Registration failed.")]
+        public async Task<IActionResult> Register([FromBody] UserCreateDto userCreateDto)
+        {
+            var jwt = await _authService.RegisterUserAsync(userCreateDto);
+            if (string.IsNullOrEmpty(jwt))
+                return ApiResponse.BadRequest("Registration failed. Please try again.");
+
+            return ApiResponse.Ok("User registered and authenticated", "access_token", jwt);
         }
     }
 }

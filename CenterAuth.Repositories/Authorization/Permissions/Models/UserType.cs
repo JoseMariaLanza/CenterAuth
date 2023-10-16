@@ -1,4 +1,4 @@
-﻿namespace CenterAuth.Repositories.Models
+﻿namespace CenterAuth.Repositories.Authorization.Permissions.Models
 {
     public class UserType
     {

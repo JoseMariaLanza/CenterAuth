@@ -24,16 +24,23 @@ namespace CenterAuth.Services
                 new Claim(JwtRegisteredClaimNames.Sub, user.FirstName + " " + user.LastName),
                 new Claim("FirstName", user.FirstName),
                 new Claim("LastName", user.LastName),
+                new Claim("UserName", user.UserName),
+                //new Claim(ClaimTypes.Role, user.UserType?.Type ?? "Guest")
+                //new Claim(ClaimTypes.Name, user.UserName),
+                //new Claim(ClaimTypes.Role, user.UserType?.Type ?? "Guest")
             };
 
-            foreach(var email in user.AssociatedEmails)
-            {
-                claims.Add(new Claim("Email", email));
-            }
+            //foreach(var email in user.AssociatedEmails)
+            //{
+            //    claims.Add(new Claim("Email", email));
+            //}
 
             if (user.UserType is not null)
             {
-                claims.Add(new Claim("UserType", user.UserType.Name));
+                claims.Add(new Claim("UserTypeId", user.UserType.Id.ToString()));
+                claims.Add(new Claim(ClaimTypes.Role, user.UserType.Type));
+                //claims.Add(new Claim(ClaimTypes.Role, user.UserType?.Type ?? "Guest" ));
+                //claims.Add(new Claim("UserType", user.UserType.Type));
             }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));

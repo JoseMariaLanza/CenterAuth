@@ -18,6 +18,16 @@ namespace CenterAuth.Repositories.Authorization
             _authDbContext = authDbContext;
         }
 
+        public async Task<UserType?> GetUserTypeById(int userTypeId)
+        {
+            var userType = await _authDbContext.UserTypes.FindAsync(userTypeId);
+            if (userType is null)
+            {
+                return null;
+            }
+            return userType;
+        }
+
         public async Task<UserType?> GetUserTypeByName(string name)
         {
             var userType = await _authDbContext.UserTypes.FirstOrDefaultAsync(x => x.Name.ToLower() == name.ToLower());
@@ -28,21 +38,30 @@ namespace CenterAuth.Repositories.Authorization
             return userType;
         }
 
+        public async Task<List<UserType>> GetAllUserTypesAsync()
+        {
+            return await _authDbContext.UserTypes.ToListAsync();
+        }
+
         public async Task<UserType> AddUserTypeAsync(UserType userType)
         {
             _authDbContext.UserTypes.Add(userType);
 
             await _authDbContext.SaveChangesAsync();
-            return userType;
+
+            return await _authDbContext.UserTypes.FindAsync(userType.Id);
         }
 
-        public async Task<List<UserType>> GetAllUserTypesAsync()
+        public async Task<UserType> UpdateUserTypeAsync(UserType userType)
         {
+            _authDbContext.UserTypes.Update(userType);
 
-            return await _authDbContext.UserTypes.ToListAsync();
+            await _authDbContext.SaveChangesAsync();
+
+            return await _authDbContext.UserTypes.FindAsync(userType.Id);
         }
 
-        public async Task<User> AssignUserTypeAsync(User user)
+        public async Task<User?> AssignUserTypeAsync(User user)
         {
             if (user is null)
             {
@@ -53,7 +72,9 @@ namespace CenterAuth.Repositories.Authorization
 
             await _authDbContext.SaveChangesAsync();
 
-            return user;
+            return await _authDbContext.Users
+                .Include(u => u.UserType)
+                .FirstOrDefaultAsync(u => u.Id == user.Id);
         }
     }
 }

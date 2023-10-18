@@ -16,13 +16,18 @@ namespace CenterAuth.Services.DTO
         [SwaggerSchema("Last Name of the User")]
         public string LastName { get; set; }
 
+        [Required]
+        [Display(Name = "User Name")]
+        [SwaggerSchema("User Name of the User")]
+        public string UserName { get; set; }
+
         [Display(Name = "User Emails")]
         [SwaggerSchema("Collection of the emails asociated to one User")]
         public virtual ICollection<UserEmailGetDto> Emails { get; set; }
-        public string[] AssociatedEmails => Emails.Select(e => e.Email).ToArray();
+        //public string[] AssociatedEmails => Emails.Select(e => e.Email).ToArray();
 
         [Display(Name = "User Type")]
         [SwaggerSchema("User type")]
-        public virtual UserTypeGetDto UserType { get; set; }
+        public virtual UserTypeDto UserType { get; set; }
     }
 }

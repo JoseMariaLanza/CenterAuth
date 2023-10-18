@@ -10,9 +10,11 @@ namespace CenterAuth.Repositories.Authorization
 {
     public interface IAuthorizationRepository
     {
+        Task<UserType?> GetUserTypeById(int userTypeId);
         Task<UserType?> GetUserTypeByName(string name);
         Task<UserType> AddUserTypeAsync(UserType userType);
+        Task<UserType> UpdateUserTypeAsync(UserType userType);
         Task<List<UserType>> GetAllUserTypesAsync();
-        Task<User> AssignUserTypeAsync(User user);
+        Task<User?> AssignUserTypeAsync(User user);
     }
 }

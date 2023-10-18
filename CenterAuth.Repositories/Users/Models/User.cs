@@ -15,7 +15,7 @@ namespace CenterAuth.Repositories.Users.Models
         {
             UserTypeId = null; // default value
             Emails = new List<UserEmail>();
-            isActive = false;
+            IsActive = false;
         }
 
         public int Id { get; set; }
@@ -42,6 +42,6 @@ namespace CenterAuth.Repositories.Users.Models
         [ForeignKey(nameof(UserTypeId))]
         public virtual UserType? UserType { get; set; }
 
-        public bool isActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

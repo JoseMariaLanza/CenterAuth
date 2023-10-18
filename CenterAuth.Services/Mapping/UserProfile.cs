@@ -12,22 +12,30 @@ namespace CenterAuth.Services.Mapping
             CreateMap<User, UserGetDto>();
             CreateMap<string, UserEmail>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src));
-            CreateMap<UserCreateDto, User>()
-                .ForMember(dest => dest.FirstName, opt => opt.Ignore())
-                .ForMember(dest => dest.LastName, opt => opt.Ignore())
-                .ForMember(dest => dest.UserName, opt => opt.Ignore())
+            CreateMap<UserGetDto, User>()
                 .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
-                .ForMember(dest => dest.PasswordSalt, opt => opt.Ignore())
+                .ForMember(dest => dest.PasswordSalt, opt => opt.Ignore());
+            CreateMap<UserCreateDto, User>()
+                //.ForMember(dest => dest.FirstName, opt => opt.Ignore())
+                //.ForMember(dest => dest.LastName, opt => opt.Ignore())
+                //.ForMember(dest => dest.UserName, opt => opt.Ignore())
+                //.ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
+                //.ForMember(dest => dest.PasswordSalt, opt => opt.Ignore())
                 .ForMember(dest => dest.Emails, opt => opt.MapFrom(src => src.Emails));
             CreateMap<UserUpdateDto, User>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.FirstName, opt => opt.Ignore())
-                .ForMember(dest => dest.LastName, opt => opt.Ignore())
-                .ForMember(dest => dest.UserName, opt => opt.Ignore())
-                //.ForMember(dest => dest.Emails, opt=>)
-                .ForMember(dest => dest.UserTypeId, opt => opt.Ignore());
+                //.ForMember(dest => dest.Id, opt => opt.Ignore())
+                //.ForMember(dest => dest.FirstName, opt => opt.Ignore())
+                //.ForMember(dest => dest.LastName, opt => opt.Ignore())
+                //.ForMember(dest => dest.UserName, opt => opt.Ignore())
+                //.ForMember(dest => dest.UserTypeId, opt => opt.Ignore())
+                .ForMember(dest => dest.Emails, opt => opt.MapFrom(src => src.Emails));
             CreateMap<UserEmail, UserEmailGetDto>();
-            CreateMap<UserType, UserTypeGetDto>();
+            CreateMap<UserType, UserTypeDto>();
+            CreateMap<UserTypeDto, UserType>();
+            CreateMap<UserType, UserTypeCreateDto>();
+            CreateMap<UserTypeCreateDto, UserType>();
+            CreateMap<AssignTypeDto, object>()
+                .ConstructUsing(src => new { src.UserId, src.UserTypeId });
         }
     }
 }

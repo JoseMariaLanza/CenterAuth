@@ -11,11 +11,11 @@ namespace CenterAuth.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
-        private readonly IAuthenticationService _authService;
+        private readonly IAuthenticationService _authenticationService;
 
-        public UserController(IAuthenticationService authService)
+        public UserController(IAuthenticationService authenticationService)
         {
-            _authService = authService;
+            _authenticationService = authenticationService;
         }
 
         [HttpPost("login")]
@@ -24,7 +24,7 @@ namespace CenterAuth.Controllers
         [SwaggerResponse(400, "Wrong credentials.")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto userLoginDto) // Assuming you have a UserLoginDto
         {
-            var jwt = await _authService.AuthenticateUserAsync(userLoginDto.UserName, userLoginDto.Password);
+            var jwt = await _authenticationService.AuthenticateUserAsync(userLoginDto.UserName, userLoginDto.Password);
             if (string.IsNullOrEmpty(jwt))
                 return ApiResponse.NotFound("User does not exists.");
 
@@ -37,7 +37,7 @@ namespace CenterAuth.Controllers
         [SwaggerResponse(400, "Registration failed.")]
         public async Task<IActionResult> Register([FromBody] UserCreateDto userCreateDto)
         {
-            var jwt = await _authService.RegisterUserAsync(userCreateDto);
+            var jwt = await _authenticationService.RegisterUserAsync(userCreateDto);
             if (string.IsNullOrEmpty(jwt))
                 return ApiResponse.BadRequest("Registration failed. Please try again.");
 

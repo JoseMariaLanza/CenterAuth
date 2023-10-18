@@ -46,7 +46,7 @@ namespace CenterAuth.Helpers
             });
         }
 
-        public static IActionResult Created(string message, string key = "response", object data = null)
+        public static IActionResult Created(string message, string key = null, object data = null)
         {
             object responseData;
 

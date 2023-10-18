@@ -78,7 +78,6 @@ D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth.AssemblyInfoInputs.cache
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth.AssemblyInfo.cs
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth.csproj.CoreCompileInputs.cache
-D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth.MvcApplicationPartsAssemblyInfo.cs
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth.MvcApplicationPartsAssemblyInfo.cache
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\CenterAuth.dll
 D:\projects\Personal\.NET-Core\CenterAuth\CenterAuth\obj\Debug\net6.0\refint\CenterAuth.dll

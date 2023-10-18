@@ -34,23 +34,23 @@ namespace CenterAuth.Services
             return _jwtService.GenerateJwtToken(userGet);
         }
 
-        public async Task<string> RegisterUserAsync(UserCreateDto userDto)
+        public async Task<string> RegisterUserAsync(UserCreateDto userCreateDto)
         {
-            var storedUser = await _userRepository.GetUserAsync(userDto.UserName);
+            var storedUser = await _userRepository.GetUserAsync(userCreateDto.UserName);
 
-            if (storedUser is not null && storedUser.Emails.Select(ue => ue.Email).All(email => userDto.Emails.Contains(email)))
+            if (storedUser is not null && storedUser.Emails.Select(ue => ue.Email).All(email => userCreateDto.Emails.Contains(email)))
             {
                 return "Email already registered.";
             }
 
             byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(userDto.Password, out passwordHash, out passwordSalt);
+            CreatePasswordHash(userCreateDto.Password, out passwordHash, out passwordSalt);
 
-            var user = _mapper.Map<User>(userDto);
+            var user = _mapper.Map<User>(userCreateDto);
             user.PasswordHash = Convert.ToBase64String(passwordHash);
             user.PasswordSalt = Convert.ToBase64String(passwordSalt);
 
-            user.Emails = userDto.Emails.Select(email => new UserEmail { Email = email }).ToList();
+            user.Emails = userCreateDto.Emails.Select(email => new UserEmail { Email = email }).ToList();
 
             var createdUser = await _userRepository.CreateUserAsync(user);
 

@@ -59,6 +59,12 @@ namespace CenterAuth.Services
             return _jwtService.GenerateJwtToken(userGet);
         }
 
+        public async Task<List<UserGetDto>> GetAllUsersAsync()
+        {
+            var users = await _userRepository.GetAllUsersAsync();
+            return _mapper.Map<List<UserGetDto>>(users);
+        }
+
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())

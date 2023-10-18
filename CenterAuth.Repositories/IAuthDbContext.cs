@@ -9,7 +9,6 @@ namespace CenterAuth.Repositories
         public DbSet<User> Users { get; set; }
         public DbSet<UserEmail> UserEmails { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

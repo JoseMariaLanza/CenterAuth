@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using CenterAuth.Repositories.Users;
 using CenterAuth.Repositories.Authorization;
+using CenterAuth.Constants;
 
 namespace CenterAuth
 {
@@ -90,6 +91,14 @@ namespace CenterAuth
             });
 
             services.AddScoped<IJwtService, JwtService>();
+        }
+
+        public static void ConfigurePolicies(this IServiceCollection services)
+        {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOrSiteAdmin", policy => policy.RequireRole(UserTypes.Admin.HierarchyNode, UserTypes.Staff.Management.SiteAdmin.HierarchyNode));
+            });
         }
     }
 }

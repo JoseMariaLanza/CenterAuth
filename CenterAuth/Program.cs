@@ -18,6 +18,7 @@ namespace CenterAuth
             builder.Services.ConfigureDependencies();
             builder.Services.ConfigureSwagger();
             builder.Services.ConfigureJwtAuthentication(configuration);
+            builder.Services.ConfigurePolicies();
 
             // Add services to the container.
             builder.Services.AddControllers();

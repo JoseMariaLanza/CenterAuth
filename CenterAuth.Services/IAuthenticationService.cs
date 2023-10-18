@@ -6,5 +6,6 @@ namespace CenterAuth.Services
     {
         Task<string?> AuthenticateUserAsync(string email, string password);
         Task<string> RegisterUserAsync(UserCreateDto userDto);
+        Task<List<UserGetDto>> GetAllUsersAsync();
     }
 }

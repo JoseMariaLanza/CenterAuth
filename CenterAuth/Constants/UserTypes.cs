@@ -17,8 +17,12 @@
             {
                 public const int Id = 3;
                 public const string HierarchyNode = "/2/1/";
+                public static class SiteAdmin
+                {
+                    public const int Id = 5;
+                    public const string HierarchyNode = "/2/1/1/";
+                }
             }
-
         }
     }
 }

@@ -7,6 +7,11 @@ namespace CenterAuth.Services.DTO
     public class UserGetDto
     {
         [Required]
+        [Display(Name = "User Id")]
+        [SwaggerSchema("User Id")]
+        public int Id { get; set; }
+
+        [Required]
         [Display(Name = "First Name")]
         [SwaggerSchema("First Name of the User")]
         public string FirstName { get; set; }

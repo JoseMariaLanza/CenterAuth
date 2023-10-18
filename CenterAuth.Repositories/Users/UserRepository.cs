@@ -35,6 +35,11 @@ namespace CenterAuth.Repositories.Users
             return await _authDbContext.Users.Include(u => u.UserType).FirstOrDefaultAsync(x => x.UserName == username);
         }
 
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _authDbContext.Users.Include(u => u.UserType).ToListAsync();
+        }
+
         public async Task<User> CreateUserAsync(User user)
         {
             if (user == null)

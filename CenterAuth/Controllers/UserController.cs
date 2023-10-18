@@ -1,6 +1,8 @@
-﻿using CenterAuth.Helpers;
+﻿using CenterAuth.Constants;
+using CenterAuth.Helpers;
 using CenterAuth.Services;
 using CenterAuth.Services.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -42,6 +44,20 @@ namespace CenterAuth.Controllers
                 return ApiResponse.BadRequest("Registration failed. Please try again.");
 
             return ApiResponse.Ok("User registered and authenticated", "access_token", jwt);
+        }
+
+        [Authorize(Policy = "AdminOrSiteAdmin")]
+        [HttpGet("user-list")]
+        [SwaggerOperation(Summary = "Retrieve all registered users.")]
+        [SwaggerResponse(200, "Users retrieved successfully.", typeof(string))]
+        [SwaggerResponse(400, "Registration failed.")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var result = await _authenticationService.GetAllUsersAsync();
+            if (result is null)
+                return ApiResponse.NoContent();
+
+            return ApiResponse.Ok("Users retrieved successfully.", "users", result);
         }
     }
 }

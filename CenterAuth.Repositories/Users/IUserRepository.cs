@@ -12,5 +12,6 @@ namespace CenterAuth.Repositories.Users
         Task<User> GetUserByIdAsync(int userId);
         Task<User> GetUserAsync(string username);
         Task<User> CreateUserAsync(User user);
+        Task<List<User>> GetAllUsersAsync();
     }
 }

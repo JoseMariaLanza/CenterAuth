@@ -27,8 +27,8 @@ namespace CenterAuth.Services
 
         public async Task<List<UserTypeDto>> GetAllUserTypesAsync()
         {
-            var users = await _authorizationRepository.GetAllUserTypesAsync();
-            return _mapper.Map<List<UserTypeDto>>(users);
+            var userTypes = await _authorizationRepository.GetAllUserTypesAsync();
+            return _mapper.Map<List<UserTypeDto>>(userTypes);
         }
 
         public async Task<UserTypeDto> AddUserTypeAsync(UserTypeCreateDto userTypeCreateDto) 

@@ -27,7 +27,7 @@ namespace CenterAuth.Repositories
 
             modelBuilder.Entity<User>()
                 .Property(u => u.UserTypeId)
-                .HasDefaultValue(1);
+                .HasDefaultValue(null);
         }
     }
 }

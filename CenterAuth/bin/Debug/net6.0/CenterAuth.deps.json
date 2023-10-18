@@ -577,7 +577,8 @@
       },
       "CenterAuth.Repositories/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "6.0.21"
+          "Microsoft.EntityFrameworkCore": "6.0.21",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.21"
         },
         "runtime": {
           "CenterAuth.Repositories.dll": {}

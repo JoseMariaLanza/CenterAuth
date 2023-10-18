@@ -1,5 +1,7 @@
 using AutoMapper;
+using CenterAuth.Middlewares;
 using CenterAuth.Repositories;
+using CenterAuth.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace CenterAuth
@@ -19,7 +21,7 @@ namespace CenterAuth
 
             // Add services to the container.
             builder.Services.AddControllers();
-            builder.Services.AddAutoMapper(typeof(StartupBase));
+            builder.Services.AddAutoMapper(typeof(StartupBase), typeof(UserProfile));
             builder.Services.AddEndpointsApiExplorer();
             var app = builder.Build();
 
@@ -30,8 +32,12 @@ namespace CenterAuth
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CenterAuth API v1"));
             }
 
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+
             app.UseHttpsRedirection();
 
+            // Jwt
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

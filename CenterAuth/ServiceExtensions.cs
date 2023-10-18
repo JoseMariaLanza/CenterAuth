@@ -19,7 +19,8 @@ namespace CenterAuth
 
         public static void ConfigureDependencies(this IServiceCollection services)
         {
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IUserRepository, UserRepository>();
             // ... other service registrations
         }
@@ -51,9 +52,13 @@ namespace CenterAuth
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
-                    ValidateAudience = false
+                    //ValidIssuer = jwtSettings["Issuer"],
+                    ValidateAudience = false,
+                    //ValidAudience = jwtSettings["Audience"]
                 };
             });
+
+            services.AddScoped<IJwtService, JwtService>();
         }
     }
 }

@@ -6,12 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CenterAuth.Repositories.Models
+namespace CenterAuth.Services.DTO
 {
-    public class User
+    public class UserCreateDto
     {
-        public int Id { get; set; }
-
         [StringLength(100)]
         [Required]
         public string FirstName { get; set; }
@@ -24,16 +22,8 @@ namespace CenterAuth.Repositories.Models
         public string UserName { get; set; }
 
         [Required]
-        [MinLength(6)]
         public string Password { get; set; }
 
-        public virtual ICollection<UserEmail> Emails { get; set; }
-
-        [Required]
-        public int UserTypeId { get; set; }
-
-        [ForeignKey(nameof(UserTypeId))]
-        public virtual UserType UserType { get; set; }
+        public virtual List<string> Emails { get; set; }
     }
 }
- 

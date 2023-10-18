@@ -25,13 +25,12 @@ namespace CenterAuth.Controllers
         [SwaggerResponse(200, "Successfully retrieved user types.", typeof(List<UserTypeDto>))]
         public async Task<IActionResult> GetUserTypes()
         {
-            var userTypes = await _authorizationManagementService.GetAllUserTypesAsync();
+            var result = await _authorizationManagementService.GetAllUserTypesAsync();
 
-            if (userTypes is null)
-            {
+            if (result is null)
                 return ApiResponse.NoContent();
-            }
-            return ApiResponse.Ok("Successfully retrieved user types.", "UserTypes", userTypes);
+
+            return ApiResponse.Ok("Successfully retrieved user types.", "UserTypes", result);
         }
 
         [HttpPost("user-type")]
@@ -48,7 +47,7 @@ namespace CenterAuth.Controllers
         }
 
         [HttpPut("user-type")]
-        [SwaggerOperation(Summary = "Add a new user type.")]
+        [SwaggerOperation(Summary = "Update an existing user type.")]
         [SwaggerResponse(200, "User type updated successfully.")]
         [SwaggerResponse(400, "Failed to update user type.")]
         public async Task<IActionResult> UpdateUserType([FromBody] UserTypeDto userTypeUpdateDto)
@@ -67,11 +66,8 @@ namespace CenterAuth.Controllers
         public async Task<IActionResult> AssignUserType([FromBody] AssignTypeDto assignTypeDto)
         {
             var result = await _authorizationManagementService.AssignUserTypeAsync(assignTypeDto);
-
             if ( result is null)
-            {
                 return ApiResponse.BadRequest("Failed to assign user type.");
-            }
 
             return ApiResponse.Ok("User type assigned successfully.", "UpdatedUser", result);
         }

@@ -16,18 +16,8 @@ namespace CenterAuth.Services.Mapping
                 .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
                 .ForMember(dest => dest.PasswordSalt, opt => opt.Ignore());
             CreateMap<UserCreateDto, User>()
-                //.ForMember(dest => dest.FirstName, opt => opt.Ignore())
-                //.ForMember(dest => dest.LastName, opt => opt.Ignore())
-                //.ForMember(dest => dest.UserName, opt => opt.Ignore())
-                //.ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
-                //.ForMember(dest => dest.PasswordSalt, opt => opt.Ignore())
                 .ForMember(dest => dest.Emails, opt => opt.MapFrom(src => src.Emails));
             CreateMap<UserUpdateDto, User>()
-                //.ForMember(dest => dest.Id, opt => opt.Ignore())
-                //.ForMember(dest => dest.FirstName, opt => opt.Ignore())
-                //.ForMember(dest => dest.LastName, opt => opt.Ignore())
-                //.ForMember(dest => dest.UserName, opt => opt.Ignore())
-                //.ForMember(dest => dest.UserTypeId, opt => opt.Ignore())
                 .ForMember(dest => dest.Emails, opt => opt.MapFrom(src => src.Emails));
             CreateMap<UserEmail, UserEmailGetDto>();
             CreateMap<UserType, UserTypeDto>();

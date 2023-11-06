@@ -8,6 +8,7 @@ using System.Text;
 using CenterAuth.Repositories.Users;
 using CenterAuth.Repositories.Authorization;
 using CenterAuth.Constants;
+using CenterAuth.Helpers;
 
 namespace CenterAuth
 {
@@ -21,6 +22,17 @@ namespace CenterAuth
 
         public static void ConfigureDependencies(this IServiceCollection services)
         {
+            //services.AddSingleton<IRedisHelper, RedisHelper>(sp =>
+            //{
+            //    var config = sp.GetRequiredService<IConfiguration>();
+            //    var connectionString = config.GetConnectionString("Redis:Configuration");
+            //    return new RedisHelper(connectionString);
+            //});
+
+            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(configuration["Redis:Configuration"]));
+
+            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(configuration.GetConnectionString("Redis:Configuration")));
+            //services.AddTransient<IRedisService, RedisService>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IAuthorizationManagementService, AuthorizationManagementService>();
             services.AddScoped<IJwtService, JwtService>();
@@ -99,6 +111,14 @@ namespace CenterAuth
             {
                 options.AddPolicy("AdminOrSiteAdmin", policy => policy.RequireRole(UserTypes.Admin.HierarchyNode, UserTypes.Staff.Management.SiteAdmin.HierarchyNode));
             });
+        }
+
+        public static void AddRedisServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            var redisConfig = configuration["Redis:Configuration"];
+            services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(redisConfig));
+            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(configuration.GetConnectionString("Redis:Configuration")));
+            services.AddTransient<IRedisService, RedisService>();
         }
     }
 }

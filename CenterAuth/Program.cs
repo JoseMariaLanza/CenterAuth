@@ -13,12 +13,13 @@ namespace CenterAuth
             var builder = WebApplication.CreateBuilder(args);
 
             var configuration = builder.Configuration;
-            // Configure services in my ServiceExtension class
+            // Configure services in ServiceExtension class
             builder.Services.ConfigureDatabase(configuration);
             builder.Services.ConfigureDependencies();
             builder.Services.ConfigureSwagger();
             builder.Services.ConfigureJwtAuthentication(configuration);
             builder.Services.ConfigurePolicies();
+            builder.Services.AddRedisServices(configuration);
 
             // Add services to the container.
             builder.Services.AddControllers();

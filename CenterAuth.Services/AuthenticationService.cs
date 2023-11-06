@@ -3,6 +3,7 @@ using CenterAuth.Repositories.Users;
 using CenterAuth.Repositories.Users.Models;
 using CenterAuth.Services.DTO;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace CenterAuth.Services
 {
@@ -10,28 +11,40 @@ namespace CenterAuth.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtService _jwtService;
-        private readonly IMapper _mapper;  // Assuming you're using AutoMapper
+        private readonly IMapper _mapper;
+        private readonly IRedisService _redisService;
 
-        public AuthenticationService(IUserRepository userRepository, IJwtService jwtService, IMapper mapper)
+        public AuthenticationService(IUserRepository userRepository, IJwtService jwtService, IMapper mapper, IRedisService redisService)
         {
             _userRepository = userRepository;
             _jwtService = jwtService;
             _mapper = mapper;
+            _redisService = redisService;
         }
 
-        public async Task<string?> AuthenticateUserAsync(string email, string password)
+        public async Task<string?> AuthenticateUserAsync(string username, string password)
         {
-            var user = await _userRepository.GetUserAsync(email);
-            if (user is null)
-                return null; // User not found
+            // Fetch the user directly from the database
+            User user = await _userRepository.GetUserAsync(username);
+
+            if (user == null)
+                return null;
 
             var passwordHash = Convert.FromBase64String(user.PasswordHash);
             if (!VerifyPasswordHash(password, passwordHash, Convert.FromBase64String(user.PasswordSalt)))
                 throw new BadHttpRequestException("Incorrect username or password.");
-            // Use AutoMapper to map User to UserGet
-            var userGet = _mapper.Map<UserGetDto>(user);
 
-            return _jwtService.GenerateJwtToken(userGet);
+            // Create the User DTO for caching
+            var userGetDto = _mapper.Map<UserGetDto>(user);
+
+            // Generate the JWT to use it as a key in Redis
+            var token = _jwtService.GenerateJwtToken(userGetDto);
+
+            // Cache the user DTO in Redis using JWT token as a key. Since PasswordHash and PasswordSalt are not part of the DTO, they won't be cached.
+            await _redisService.SetStringAsync(token, JsonSerializer.Serialize(userGetDto));
+
+            return token;
+
         }
 
         public async Task<string> RegisterUserAsync(UserCreateDto userCreateDto)

@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AuthOrchestrator.Contracts;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace CenterAuth.Services.DTO
 {
-    public class UserTypeDto
+    public class UserTypeDto : IUserType
     {
 
         [Required]

@@ -3,6 +3,7 @@ using CenterAuth.Middlewares;
 using CenterAuth.Repositories;
 using CenterAuth.Services.Mapping;
 using Microsoft.EntityFrameworkCore;
+using AuthOrchestrator;
 
 namespace CenterAuth
 {
@@ -13,11 +14,15 @@ namespace CenterAuth
             var builder = WebApplication.CreateBuilder(args);
 
             var configuration = builder.Configuration;
+
+            // Now use the built configuration
+            builder.Services.ConfigureJwtAuthentication(configuration);
+
             // Configure services in ServiceExtension class
             builder.Services.ConfigureDatabase(configuration);
             builder.Services.ConfigureDependencies();
             builder.Services.ConfigureSwagger();
-            builder.Services.ConfigureJwtAuthentication(configuration);
+            //builder.Services.ConfigureJwtAuthentication(configuration);
             builder.Services.ConfigurePolicies();
             builder.Services.AddRedisServices(configuration);
 

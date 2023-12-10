@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using AuthOrchestrator.Jwt;
+using AuthOrchestrator.Redis;
 using CenterAuth.Repositories.Users;
 using CenterAuth.Repositories.Users.Models;
 using CenterAuth.Services.DTO;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
+using AuthOrchestrator.Contracts;
 
 namespace CenterAuth.Services
 {

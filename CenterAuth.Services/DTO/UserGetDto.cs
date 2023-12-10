@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Text.Json.Serialization;
+using AuthOrchestrator.Contracts;
 
 namespace CenterAuth.Services.DTO
 {
-    public class UserGetDto
+    public class UserGetDto : IUserForToken
     {
         [Required]
         [Display(Name = "User Id")]
@@ -28,11 +29,12 @@ namespace CenterAuth.Services.DTO
 
         [Display(Name = "User Emails")]
         [SwaggerSchema("Collection of the emails asociated to one User")]
-        public virtual ICollection<UserEmailGetDto> Emails { get; set; }
-        //public string[] AssociatedEmails => Emails.Select(e => e.Email).ToArray();
+        //public virtual ICollection<UserEmailGetDto> Emails { get; set; }
+        public ICollection<IUserEmail> Emails { get; set; }
 
         [Display(Name = "User Type")]
         [SwaggerSchema("User type")]
-        public virtual UserTypeDto UserType { get; set; }
+        //public virtual UserTypeDto UserType { get; set; }
+        public IUserType UserType { get; set; }
     }
 }

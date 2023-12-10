@@ -4,11 +4,16 @@ using CenterAuth.Repositories;
 using CenterAuth.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 using System.Text;
 using CenterAuth.Repositories.Users;
 using CenterAuth.Repositories.Authorization;
 using CenterAuth.Constants;
-using CenterAuth.Helpers;
+//using CenterAuth.Helpers;
+using AuthOrchestrator;
+using AuthOrchestrator.Jwt;
+using AuthOrchestrator.Redis;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CenterAuth
 {
@@ -22,23 +27,11 @@ namespace CenterAuth
 
         public static void ConfigureDependencies(this IServiceCollection services)
         {
-            //services.AddSingleton<IRedisHelper, RedisHelper>(sp =>
-            //{
-            //    var config = sp.GetRequiredService<IConfiguration>();
-            //    var connectionString = config.GetConnectionString("Redis:Configuration");
-            //    return new RedisHelper(connectionString);
-            //});
-
-            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(configuration["Redis:Configuration"]));
-
-            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(configuration.GetConnectionString("Redis:Configuration")));
-            //services.AddTransient<IRedisService, RedisService>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IAuthorizationManagementService, AuthorizationManagementService>();
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
-            // ... other service registrations
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)
@@ -115,9 +108,20 @@ namespace CenterAuth
 
         public static void AddRedisServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var redisConfig = configuration["Redis:Configuration"];
-            services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(redisConfig));
-            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(configuration.GetConnectionString("Redis:Configuration")));
+            //var redisConfig = configuration["Redis:Configuration"];
+            //services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(redisConfig));
+            //services.AddTransient<IRedisService, RedisService>();
+
+            // Configure Redis
+            var redisSettings = new RedisSettings();
+            configuration.GetSection("Redis").Bind(redisSettings);
+
+            services.AddSingleton(redisSettings);
+            //services.AddSingleton<IConnectionMultiplexer>(sp =>
+            //    ConnectionMultiplexer.Connect(redisSettings.Configuration));
+
+            //services.AddSingleton<IRedisHelper, RedisHelper>();
+            services.AddSingleton<IRedisHelper, RedisHelper>(sp => new RedisHelper(redisSettings.Configuration));
             services.AddTransient<IRedisService, RedisService>();
         }
     }

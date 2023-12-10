@@ -18,4 +18,10 @@
     <ProjectReference Include="..\CenterAuth.Repositories\CenterAuth.Repositories.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="AuthOrchestrator">
+      <HintPath>..\..\..\.NET Core\AuthOrchestrator\AuthOrchestrator\bin\Debug\net6.0\AuthOrchestrator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -34,7 +34,7 @@ namespace CenterAuth.Middlewares
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     break;
                 default:
-                    response = ApiResponse.CreateResponse(false, "Server error");
+                    response = ApiResponse.CreateResponse(false, "The system crashed before enter to the controller!. Error message: " + exception.Message);
                     context.Response.StatusCode = (int)(HttpStatusCode.InternalServerError);
                     break;
             }

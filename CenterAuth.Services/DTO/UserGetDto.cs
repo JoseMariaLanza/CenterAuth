@@ -29,12 +29,10 @@ namespace CenterAuth.Services.DTO
 
         [Display(Name = "User Emails")]
         [SwaggerSchema("Collection of the emails asociated to one User")]
-        //public virtual ICollection<UserEmailGetDto> Emails { get; set; }
         public ICollection<IUserEmail> Emails { get; set; }
 
         [Display(Name = "User Type")]
         [SwaggerSchema("User type")]
-        //public virtual UserTypeDto UserType { get; set; }
         public IUserType UserType { get; set; }
     }
 }

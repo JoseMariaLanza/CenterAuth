@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["CenterAuth/CenterAuth.csproj", "CenterAuth/"]
-RUN dotnet restore "CenterAuth/CenterAuth.csproj"
+#RUN dotnet restore "CenterAuth/CenterAuth.csproj"
 COPY . .
 WORKDIR "/src/CenterAuth"
 RUN dotnet build "CenterAuth.csproj" -c Release -o /app/build

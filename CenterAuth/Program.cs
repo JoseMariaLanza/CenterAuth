@@ -21,8 +21,6 @@ namespace CenterAuth
             // Configure services in ServiceExtension class
             builder.Services.ConfigureDatabase(configuration);
             builder.Services.ConfigureDependencies();
-            builder.Services.ConfigureSwagger();
-            //builder.Services.ConfigureJwtAuthentication(configuration);
             builder.Services.ConfigurePolicies();
             builder.Services.AddRedisServices(configuration);
 
@@ -30,6 +28,7 @@ namespace CenterAuth
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(typeof(StartupBase), typeof(UserProfile));
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.ConfigureSwagger();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

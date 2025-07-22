@@ -7,7 +7,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using CenterAuth.Repositories.Users;
 using CenterAuth.Repositories.Authorization;
-using CenterAuth.Constants;
+using AuthOrchestrator.Auth.Constants;
 using AuthOrchestrator.Jwt;
 using AuthOrchestrator.Redis;
 
@@ -96,6 +96,14 @@ namespace CenterAuth
 
         public static void ConfigurePolicies(this IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy => policy.AllowAnyOrigin()
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod());
+            });
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOrSiteAdmin", policy => policy.RequireRole(UserTypes.Admin.HierarchyNode, UserTypes.Staff.Management.SiteAdmin.HierarchyNode));

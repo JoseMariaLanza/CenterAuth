@@ -1,9 +1,8 @@
-﻿using CenterAuth.Constants;
+﻿using AuthOrchestrator.Auth.Constants;
 using CenterAuth.Helpers;
 using CenterAuth.Services;
 using CenterAuth.Services.DTO;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -24,7 +23,7 @@ namespace CenterAuth.Controllers
         [SwaggerOperation(Summary = "Authenticate the user and retrieve his data.")]
         [SwaggerResponse(200, "User authenticated.", typeof(string))]
         [SwaggerResponse(400, "Wrong credentials.")]
-        public async Task<IActionResult> Login([FromBody] UserLoginDto userLoginDto) // Assuming you have a UserLoginDto
+        public async Task<IActionResult> Login([FromBody] UserLoginDto userLoginDto)
         {
             var jwt = await _authenticationService.AuthenticateUserAsync(userLoginDto.UserName, userLoginDto.Password);
             if (string.IsNullOrEmpty(jwt))
@@ -33,6 +32,7 @@ namespace CenterAuth.Controllers
             return ApiResponse.Ok("User authenticated.", "access_token", jwt);
         }
 
+        //[Authorize(Roles = UserTypes.Admin.HierarchyNode)]
         [HttpPost("create")]
         [SwaggerOperation(Summary = "Create a user account, authenticate and retrieve his data.")]
         [SwaggerResponse(200, "User authenticated.", typeof(string))]

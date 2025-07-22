@@ -1,10 +1,10 @@
-﻿using CenterAuth.Helpers;
+﻿using AuthOrchestrator.Auth.Constants;
+using CenterAuth.Helpers;
 using CenterAuth.Services;
 using CenterAuth.Services.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using CenterAuth.Constants;
 
 namespace CenterAuth.Controllers
 {

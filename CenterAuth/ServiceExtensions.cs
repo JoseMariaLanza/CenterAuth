@@ -70,6 +70,10 @@ namespace CenterAuth
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+            if (key is null)
+            {
+                throw new InvalidOperationException("Missing JwtSettings:Key in configuration.");
+            }
 
             services.AddAuthentication(x =>
             {
